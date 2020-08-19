@@ -182,6 +182,6 @@ TINYMCE_DEFAULT_CONFIG = {
 # SITE_ID = 1
 
 try:
-    from islamiboikotha.local_settings import *
+    from blog.local_settings import *
 except ImportError:
     pass
