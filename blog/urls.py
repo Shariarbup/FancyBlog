@@ -17,10 +17,9 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
-from django.conf.urls import url
-from django.views.decorators.cache import never_cache
 
-from post.views import index, blog, post, search, post_update, post_delete, post_create, getLogin, getLogout
+
+from post.views import index, blog, post, search, post_update, post_delete, post_create, getLogin, getLogout, getRegister
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
@@ -33,6 +32,8 @@ urlpatterns = [
     path('tinymce/',include('tinymce.urls')),
     path('login/', getLogin, name='login'),
     path('logout/', getLogout, name='logout'),
+    path('register/', getRegister, name='register'),
+
 
     
 

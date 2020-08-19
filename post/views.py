@@ -1,10 +1,11 @@
 from django.db.models import Count, Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, PostForm, RegisterUser
 from .models import Post, Author, PostView
 from marketing.models import Signup
 from django.contrib.auth import authenticate, login, logout
+
 
 def get_author(user):
     qs = Author.objects.filter(user=user)
@@ -140,3 +141,11 @@ def getLogin(request):
 def getLogout(request):
     logout(request)
     return redirect('index')
+
+def getRegister(request):
+    form = RegisterUser(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return redirect('login')
+    return render(request, 'register.html', {'form':form})

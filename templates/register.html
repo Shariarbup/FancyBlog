@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="my-2">
+<div class="container col-9 offset-1" >
+    <h3>Register Here: </h3>
+    {{ form.media }}
+    <form action="." method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-success" type="submit">Sign Up</button>
+    </form>
+</div>
+</div>
+{% endblock content %}
